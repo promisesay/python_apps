@@ -1,0 +1,16 @@
+while loop:
+    ask for an input it's a new goal or existing goal
+
+        if ask is existing give the goal the the reason is for
+            match the reason with exisitng one
+                 case1
+                    open the file that contains the reason for the goal
+                    ask the new reason
+                    1.append the reason
+                    write the reason in the file
+                 case2
+                    open the file
+                    ask reason
+                    2.append the reson
+                    and write
+

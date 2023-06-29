@@ -1,0 +1,4 @@
+[ {"question_text": "what is the answer of 2+2",
+  "alternative": ["stay mic", "2", "5", "4"], "answer": 0}, {"question_text": "what was the result of 1877 war",
+  "alternative": ["more food", "reason to live", "killing people ligally",
+    "all the above reasons"], "answer": 3}]

@@ -1,0 +1,3 @@
+"capital","peresident"
+"Washington","Trump"
+"Tehran","Mohammad"
