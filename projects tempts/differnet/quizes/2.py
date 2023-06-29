@@ -15,13 +15,17 @@ for question in mind:
     except ValueError:
         print('enter the number of alternative')
         continue
-    if answer == question['answer']:
-        anuss = f'{question["alternative"[answer]]} is correct'
-        emt = emt + 1
-        answers.append(anuss)
-    else:
-        anuss = f'{question["alternative"[answer]]} is not correct'
-        answers.append(anuss)
+    try:
+        if answer == question['answer']:
+            anuss = f'{question["alternative"[answer]]} is correct'
+            emt = emt + 1
+            answers.append(anuss)
+        else:
+            anuss = f'{question["alternative"[answer]]} is not correct'
+            answers.append(anuss)
+    except ValueError:
+        print('try again')
+        continue
 
 for i in answers:
     print(i)
