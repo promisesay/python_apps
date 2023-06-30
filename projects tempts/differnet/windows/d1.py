@@ -1,2 +1,2 @@
-import PySimpleGUI
-import
+import PySimpleGUI as py
+
