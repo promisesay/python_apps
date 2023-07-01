@@ -1,4 +1,3 @@
-import zipWritingfiles as zy
 import PySimpleGUI as py
 
 lable = py.Text('hellow')

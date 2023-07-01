@@ -1,6 +1,5 @@
-from ..experiments.zipWritingfiles import filereader, write_file
 import PySimpleGUI
-
+import doread
 lable = PySimpleGUI.Text('comperesor')
 broswer = PySimpleGUI.FileBrowse('choose folder')
 bottun = PySimpleGUI.Input()
@@ -18,7 +17,7 @@ events = []
 event = window.read()
 for i in event:
     print(i)
-filereader(events)
+doread.reader(events)
 events.append(event)
-write_file(events)
+doread.writer(events)
 window.close()

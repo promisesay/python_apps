@@ -7,9 +7,9 @@ def write_files(lists, filepath=FILEPATH):
             file_locally.writelines(lists)
 
 
-def write_file(list, filepath=FILEPATH):
+def write_file(liist, filepath=FILEPATH):
     with open(filepath, 'r') as local_file:
-        local_file.writelines(list)
+        local_file.writelines(liist)
 
 
 def filereader(items, filepath=FILEPATH):
