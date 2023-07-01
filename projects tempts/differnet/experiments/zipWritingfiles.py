@@ -1,15 +1,18 @@
-def write_files(filepath, lists):
+FILEPATH = 'files/new.txt'
+
+
+def write_files(lists, filepath=FILEPATH):
     for file, lists in zip(filepath, lists):
         with open(filepath, 'w') as file_locally:
             file_locally.writelines(lists)
 
 
-def write_file(filepath, list):
+def write_file(list, filepath=FILEPATH):
     with open(filepath, 'r') as local_file:
         local_file.writelines(list)
 
 
-def filereader(filepath, items):
+def filereader(items, filepath=FILEPATH):
     with open(filepath, 'r') as local_file:
         items = local_file.readlines()
         return items
@@ -18,5 +21,9 @@ def filereader(filepath, items):
 if __name__ == '__main__':
     job = []
     new = input('enter:')
-    job.append(new)
-    write_files(fr'files/{new}.txt', job)
+    if new.startswith('read'):
+        filereader(job)
+        print(job)
+    else:
+        job.append(new)
+        write_files(job, fr'files/{new}.txt')
