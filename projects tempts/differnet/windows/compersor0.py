@@ -1,16 +1,31 @@
-import PySimpleGUI as sg
+import PySimpleGUI as py
+import zip_creator as zip
 
-lable = sg.Text('choose files')
-itup = sg.Input()
-browser = sg.FileBrowse('choose')
 
-lable1 = sg.Text('choose destination')
-itup1 = sg.Input()
-browser2 = sg.FolderBrowse('choose')
+lable = py.Text('compress some shit')
+file_button = py.FilesBrowse('choose some')
+what_adderess = py.Input(tooltip='files addresses', key='files_r')
 
-button = sg.Button('comperes')
+lable2 = py.Text('where to shuvel')
+folder_button = py.FolderBrowse('where?')
+where_adderss = py.Input(tooltip='address', key='dest_address')
 
-window = sg.Window('window', layout=[[lable, itup, browser], [lable1, itup1, browser2],
-                                     [button]])
-window.read()
+namelable = py.Input(tooltip='enter the name', key='name')
+
+button = py.Button('do')
+output = py.Text(key='out', text_color='blue')
+window = py.Window('shovel', layout=[[lable, what_adderess, file_button],
+                                     [lable2, where_adderss, folder_button], [namelable],
+                                     [button, output]], background_color='black')
+
+while True:
+    command, paths = window.read()
+    print(command, paths)
+    filepaths = paths['files_r']
+    filepaths = filepaths.split(';')
+    name = paths['name']
+    zip.make_archive(filepaths, name, dest_filepath=paths['dest_address'])
+    window['out'].Update('complete')
+    if command == py.CloseButton:
+        break
 window.close()

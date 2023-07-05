@@ -1,23 +1,29 @@
 import PySimpleGUI
-import doread
-lable = PySimpleGUI.Text('comperesor')
-broswer = PySimpleGUI.FileBrowse('choose folder')
-bottun = PySimpleGUI.Input()
+import zip_creator
+filepath = 'addresses.txt'
+Text = PySimpleGUI.Text('compressor')
+file_browser = PySimpleGUI.FilesBrowse('choose file', key='file addresses')
+files_address = PySimpleGUI.Input(tooltip='enter the address', key='files')
 
-lable2 = PySimpleGUI.Text('Choose file')
-broswer2 = PySimpleGUI.FolderBrowse('choose destination')
-bottun2 = PySimpleGUI.Input()
+Text2 = PySimpleGUI.Text('Choose file')
+folder_browser = PySimpleGUI.FolderBrowse('choose destination')
+dest_address = PySimpleGUI.Input(tooltip='enter', key='dest_address')
 
-bottun3 = PySimpleGUI.Button('comperes')
+compress_button = PySimpleGUI.Button('comperes')
 
-window = PySimpleGUI.Window('compressor', layout=[[lable2, broswer, bottun2],
-                                                  [lable, broswer2, bottun],
-                                                  [bottun3]])
-events = []
-event = window.read()
-for i in event:
-    print(i)
-doread.reader(events)
-events.append(event)
-doread.writer(events)
+window = PySimpleGUI.Window('compressor',
+                            layout=[[Text2, files_address, file_browser],
+                                    [Text, dest_address, folder_browser],
+                                    [compress_button]])
+
+
+while True:
+    event, values = window.read()
+    if event == 'comperes':
+        paths = values['files']
+        dest_path = values['dest_address']
+        paths = paths.split(';')
+        zip_creator.make_archive(paths, dest_path)
+    elif event == PySimpleGUI.WINDOW_CLOSED:
+        break
 window.close()
